@@ -37,5 +37,8 @@
   "Copy original text successfully.": "Copy original text successfully.",
   "Copy translation successfully.": "Copy translation successfully.",
   "Tempreture": "Tempreture",
-  "Higher tempreture will be more creative.": "Higher tempreture will be more creative."
+  "Higher tempreture will be more creative.": "Higher tempreture will be more creative.",
+  "Extra prompt": "Extra prompt",
+  "Some extra prompt to make the translation meets your expectations.": "Some extra prompt to make the translation meets your expectations.",
+  "Input Extra prompt": "Input Extra prompt"
 }

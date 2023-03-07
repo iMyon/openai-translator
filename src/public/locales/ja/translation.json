@@ -37,5 +37,8 @@
   "Copy original text successfully.": "元のテキストをコピーしました。",
   "Copy translation successfully.": "翻訳をコピーしました。",
   "Tempreture": "臨機応変",
-  "Higher tempreture will be more creative.": "高い臨機応変值はより創造的になります。"
+  "Higher tempreture will be more creative.": "高い臨機応変值はより創造的になります。",
+  "Extra prompt": "追加のプロンプト",
+  "Some extra prompt to make the translation meets your expectations.": "追加のプロンプトを入力すると、翻訳が期待通りになります。",
+  "Input Extra prompt": "追加のプロンプトを入力"
 }

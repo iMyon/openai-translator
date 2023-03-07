@@ -7,10 +7,11 @@ export const fetchTranslation = async (params: {
   token: string;
   engine: OpenAIModel;
   prompt: string;
+  customPrompt: string;
   tempretureParam: number;
   queryText: string;
 }) => {
-  const { token, engine, prompt, queryText, tempretureParam } = params;
+  const { token, engine, prompt, customPrompt, queryText, tempretureParam } = params;
   if (!token) {
     throw new Error('No API Key found!');
   }
@@ -27,7 +28,7 @@ export const fetchTranslation = async (params: {
   const tmpParam = +tempretureParam >= 1 && +tempretureParam <= 1.5 ? +tempretureParam : getRadomNumber(1, 1.5);
 
   if (isGptModel) {
-    const resp = await OpenAIClient.chatCompletions(token, prompt, queryText, engine as GPTModel, tmpParam);
+    const resp = await OpenAIClient.chatCompletions(token, prompt, customPrompt, queryText, engine as GPTModel, tmpParam);
     const text = resp.data.choices
       .map((choice) => choice.message.content.trim())
       .join('\n')
@@ -35,7 +36,7 @@ export const fetchTranslation = async (params: {
     return trimText(text);
   }
 
-  const resp = await OpenAIClient.completions(token, prompt, queryText, engine, tmpParam);
+  const resp = await OpenAIClient.completions(token, prompt, customPrompt, queryText, engine, tmpParam);
   const text = resp.data.choices
     .map((choice) => choice.text.trim())
     .join('\n')

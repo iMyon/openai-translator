@@ -68,6 +68,7 @@ export function useAxios(config: AxiosRequestConfig) {
 export async function completions(
   token: string,
   prompt: string,
+  customPrompt: string,
   query: string,
   model: Omit<OpenAIModel, GPTModel> = 'text-davinci-003',
   temperature = 0,
@@ -97,6 +98,9 @@ export async function completions(
     // eslint-disable-next-line camelcase
     presence_penalty: presencePenalty,
   };
+  if (customPrompt) {
+    body.prompt = `${customPrompt}\n\n${body.prompt}`;
+  }
 
   const response = await client.post<CompletionsResponse>(url, body, config);
   return response;
@@ -105,6 +109,7 @@ export async function completions(
 export async function chatCompletions(
   token: string,
   prompt: string,
+  customPrompt = '',
   query: string,
   model: GPTModel = 'gpt-3.5-turbo-0301',
   temperature = 0,
@@ -132,10 +137,16 @@ export async function chatCompletions(
     frequency_penalty: frequencyPenalty,
     // eslint-disable-next-line camelcase
     presence_penalty: presencePenalty,
-    messages: [
-      { role: 'system', content: prompt },
-      { role: 'user', content: `"${query}"` },
-    ],
+    messages: customPrompt
+      ? [
+          { role: 'system', content: prompt },
+          { role: 'system', content: `${customPrompt}` },
+          { role: 'user', content: `"${query}"` },
+        ]
+      : [
+          { role: 'system', content: prompt },
+          { role: 'user', content: `"${query}"` },
+        ],
   };
 
   const response = await client.post<ChatCompletionsResponse>(url, body, config);

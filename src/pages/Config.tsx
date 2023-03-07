@@ -13,7 +13,7 @@ function ConfigPage() {
   const handleSave = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const { openaiApiKey, selectedModel, tempretureParam } = Object.fromEntries(formData.entries());
+    const { openaiApiKey, selectedModel, tempretureParam, customPrompt } = Object.fromEntries(formData.entries());
     if (!openaiApiKey) {
       toast.error(t('Please enter your API Key.'));
       return;
@@ -27,6 +27,7 @@ function ConfigPage() {
     setExtraConfig((prev) => ({
       ...prev,
       tempretureParam: +tempretureParam,
+      customPrompt: `${customPrompt}`,
     }));
     toast.success(t('Config Saved!'));
   };
@@ -72,6 +73,20 @@ function ConfigPage() {
               </option>
             ))}
           </select>
+        </div>
+        <div className="mb-2 form-control">
+          <label className="label">
+            <span className="text-lg font-bold label-text">{t('Extra prompt')}</span>
+            <span className="label-text-alt">
+              {t('Some extra prompt to make the translation meets your expectations.')}
+            </span>
+          </label>
+          <input
+            className="w-full input input-primary"
+            defaultValue={extraConfig.customPrompt}
+            name="customPrompt"
+            placeholder={t('Input Extra prompt')}
+          ></input>
         </div>
         <div className="mb-4 form-control">
           <label className="label">

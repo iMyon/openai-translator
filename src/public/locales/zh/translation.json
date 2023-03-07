@@ -37,5 +37,8 @@
   "Copy original text successfully.": "复制原文成功。",
   "Copy translation successfully.": "复制翻译成功。",
   "Tempreture": "随机应变",
-  "Higher tempreture will be more creative.": "随机应变值越高，结果越有创意。"
+  "Higher tempreture will be more creative.": "随机应变值越高，结果越有创意。",
+  "Extra prompt": "额外的翻译提示",
+  "Some extra prompt to make the translation meets your expectations.": "一些额外的提示，使翻译更符合您的期望。",
+  "Input Extra prompt": "输入额外的翻译提示"
 }

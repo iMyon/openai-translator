@@ -83,6 +83,7 @@ function TranslatorPage() {
       token: openaiApiKey,
       engine: currentModel,
       prompt: prompt,
+      customPrompt: extraConfig.customPrompt,
       tempretureParam: extraConfig.tempretureParam,
       queryText: translateText as string,
     });

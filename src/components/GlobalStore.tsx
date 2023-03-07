@@ -35,6 +35,7 @@ const GlobalContext = createContext<GlobalContextValue>({
   setCurrentModel: () => {},
   extraConfig: {
     tempretureParam: 1,
+    customPrompt: '',
   },
   setExtraConfig: () => {},
   translator: {
@@ -73,6 +74,7 @@ export function GlobalProvider(props: Props) {
   });
   const [extraConfig, setExtraConfig] = useLocalStorage<ConfigValues>('extra-config', {
     tempretureParam: 1,
+    customPrompt: '',
   });
 
   const {

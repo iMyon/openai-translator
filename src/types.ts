@@ -55,4 +55,5 @@ export type LastTranslateData = {
 
 export type ConfigValues = {
   tempretureParam: number;
+  customPrompt: string;
 };
